@@ -4,7 +4,7 @@ This module includes homemade angular-formatted-number directive
 
 Features
 --------
-Format numbers 123456789.12 -> 123`456`789.12 dynamically while typing
+* Format numbers 123456789.12 -> 123\`456\`789.12 dynamically adding thousand separator while typing
 
 Demo
 ------------
