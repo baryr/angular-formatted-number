@@ -1,10 +1,14 @@
 {
   "name": "angular-formatted-number",
-  "private": true,
-  "version": "0.0.0",
   "description": "AngularJS formatted number directive",
-  "repository": "",
+  "version": "1.0.0",
+  "homepage": "https://github.com/baryr/angular-formatted-number",
   "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baryr/angular-formatted-number.git"
+  },
   "devDependencies": {
     "http-server": "^0.9.0",
     "jasmine-core": "^2.5.2",
@@ -12,6 +16,7 @@
     "eslint-config-angular": "^0.4.0",
     "eslint-plugin-angular": "^0.12.0",
     "eslint-plugin-jasmine": "^1.0.0",
+    "bower": "^1.8.0",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",
