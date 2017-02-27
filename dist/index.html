@@ -5,7 +5,7 @@
         <title>AngularJS formatted-number</title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
-		<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
 
         <!-- formatted-number files -->
         <script src="formatted-number.js"></script>
@@ -27,18 +27,17 @@
                         <div class="form-group">
                             <label class="col-sm-3" for="formattedInput">Formatted Input:</label>
                             <div class="col-sm-9" ng-init="vm = {}">
-                                <input formatted-number 
-								       id="formattedInput" 
-									   name="formattedInput"
-									   class="form-control"
-									   ng-model="vm.value" />
+                                <input formatted-number thousand-separator="`"
+                                       id="formattedInput" 
+                                       name="formattedInput"
+                                       class="form-control"
+                                       ng-model="vm.value" />
                                 <span class="help-inline">
                                     <div>Model value: <code>{{vm.value}}</code></div>
                                     <div>NgModelController.$viewValue: <code>{{demo.formattedInput.$viewValue}}</code></div>
                                 </span>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>

@@ -8,26 +8,32 @@
   "devDependencies": {
     "http-server": "^0.9.0",
     "jasmine-core": "^2.5.2",
+    "eslint": "^3.12.2",
+    "eslint-config-angular": "^0.4.0",
+    "eslint-plugin-angular": "^0.12.0",
+    "eslint-plugin-jasmine": "^1.0.0",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^0.4.1",
     "karma-phantomjs-launcher": "^1.0.2",
-    "protractor": "^4.0.9"
+    "protractor": "^4.0.9",
+    "npm-build-tools": "^2.2.5"
   },
   "scripts": {
     "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1 ./src",
+    "start": "http-server -a localhost -p 8000 -c-1 ./dist",
     "pretest": "npm install",
-    "test": "karma start karma.conf.js",
-    "test-single-run": "karma start karma.conf.js --single-run",
+    "test": "eslint src/*.js && karma start karma.conf.js",
+    "test-single-run": "eslint src/*.js && karma start karma.conf.js --single-run",
+    "build": "n-copy --source src --destination dist *.js",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
-	"protractor": "protractor test/protractor.conf.js"
+    "protractor": "protractor test/protractor.conf.js"
   }
 }
