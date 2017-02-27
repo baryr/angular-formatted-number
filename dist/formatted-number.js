@@ -14,12 +14,14 @@ angular.module('baryr.formattedNumber', [])
             require: 'ngModel',
             restrict: 'A',
             scope: {
-               thousandSeparator: '@thousandSeparator'
+                thousandSeparator: '@thousandSeparator',
+                decimalPlaces: '@decimalPlaces'
             },
             link: function formattedNumberLinkFunction(scope, iElement, iAttrs, controller) {
                 
                 var config = {
-                    thousandSeparator: angular.isDefined(iAttrs.thousandSeparator) ? iAttrs.thousandSeparator : '`'
+                    thousandSeparator: angular.isDefined(iAttrs.thousandSeparator) ? iAttrs.thousandSeparator : '`',
+                    decimalPlaces: angular.isDefined(iAttrs.decimalPlaces) ? iAttrs.decimalPlaces : 2
                 };
                 
                 iElement.bind("keydown", keydownHandler);
@@ -98,10 +100,19 @@ angular.module('baryr.formattedNumber', [])
                     formattedInput = formattedInput.replace(/[^\d\.]/g, '');
                     // remove all dots except first one
                     formattedInput = formattedInput.replace(/^([^.]*\.)(.*)$/, function (a, b, c) {
-                        return b + c.replace(/\./g, '').substring (0, 2);
+                        return b + c.replace(/\./g, '').substring (0, config.decimalPlaces);
                     });
+                    
                     // format string using thousandSeparator
-                    formattedInput = formattedInput.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + config.thousandSeparator);
+                    var indexOfDot = formattedInput.indexOf('.');
+                    if (indexOfDot !== -1) {
+                        var integerPart = formattedInput.slice(0, indexOfDot);
+                        var decimalPart = formattedInput.slice(indexOfDot);
+                        formattedInput = integerPart.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + config.thousandSeparator) + decimalPart;
+                    } else {
+                        formattedInput = formattedInput.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + config.thousandSeparator);
+                    }
+                    
                     return formattedInput;
                 }
 

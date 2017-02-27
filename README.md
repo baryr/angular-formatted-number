@@ -14,14 +14,18 @@ Download and open dist\index.html demo page
 Usage
 ------------
 
-```Javascript
+JavaSscript
+```
 // Setup dependency
 angular.module('app', ['baryr.formattedNumber']);
 ```
 
-```html
-<input formatted-number ng-model="value" />                         // with default \` separator
-<input formatted-number thousand-separator="`" ng-model="value" />  // with custom separator
+HTML
+```
+<input formatted-number ng-model="value" />
+<input formatted-number thousand-separator="`" ng-model="value" />  // with custom separator (by default \`)
+<input formatted-number thousand-separator="`" ng-model="value" decimal-places="3"/>  // with custom separator (by default 2)
+
 ```
 
 Tests
