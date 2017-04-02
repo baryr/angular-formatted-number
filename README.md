@@ -24,7 +24,7 @@ HTML
 ```
 <input formatted-number ng-model="value" />
 <input formatted-number thousand-separator="'" ng-model="value" />  // with custom separator (by default ')
-<input formatted-number thousand-separator="'" ng-model="value" decimal-places="3"/>  // with custom separator (by default 2)
+<input formatted-number thousand-separator="'" ng-model="value" decimal-places="3"/>  // with custom separator (by default ') and 3 decimal places (by default 2)
 
 ```
 
