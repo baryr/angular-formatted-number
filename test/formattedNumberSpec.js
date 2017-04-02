@@ -27,28 +27,28 @@ describe("uiFormattedNumber", function () {
       expect(input.val()).toBe("123");
     });
 
-    it("should format 1234 as 1`234", function() {
+    it("should format 1234 as 1'234", function() {
       var input = compileElement(inputHtml);
       scope.$apply("value = '1234'");
-      expect(input.val()).toBe("1`234");
+      expect(input.val()).toBe("1'234");
     });
 
-    it("should format 12345 12`345", function() {
+    it("should format 12345 12'345", function() {
       var input = compileElement(inputHtml);
       scope.$apply("value = '12345'");
-      expect(input.val()).toBe("12`345");
+      expect(input.val()).toBe("12'345");
     });
 
-    it("should format 1234567 1`234`567", function() {
+    it("should format 1234567 1'234'567", function() {
       var input = compileElement(inputHtml);
       scope.$apply("value = '1234567'");
-      expect(input.val()).toBe("1`234`567");
+      expect(input.val()).toBe("1'234'567");
     });
 
-    it("should format 1234567.12345 1`234`567.12", function() {
+    it("should format 1234567.12345 1'234'567.12", function() {
       var input = compileElement(inputHtml);
       scope.$apply("value = '1234567.12345'");
-      expect(input.val()).toBe("1`234`567.12");
+      expect(input.val()).toBe("1'234'567.12");
     });
 
   });

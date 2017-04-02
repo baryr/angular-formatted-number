@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "homepage": "https://github.com/baryr/angular-formatted-number",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/baryr/angular-formatted-number.git"

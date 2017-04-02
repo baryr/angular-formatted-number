@@ -18,12 +18,12 @@ angular.module('baryr.formattedNumber', [])
                 decimalPlaces: '@decimalPlaces'
             },
             link: function formattedNumberLinkFunction(scope, iElement, iAttrs, controller) {
-                
+
                 var config = {
-                    thousandSeparator: angular.isDefined(iAttrs.thousandSeparator) ? iAttrs.thousandSeparator : '`',
+                    thousandSeparator: angular.isDefined(iAttrs.thousandSeparator) ? iAttrs.thousandSeparator : "'",
                     decimalPlaces: angular.isDefined(iAttrs.decimalPlaces) ? iAttrs.decimalPlaces : 2
                 };
-                
+
                 iElement.bind("keydown", keydownHandler);
                 controller.$formatters.unshift(formatter);
                 controller.$parsers.unshift(parser);
@@ -33,8 +33,8 @@ angular.module('baryr.formattedNumber', [])
 
                     // Special handling for dot char
                     if (isDotKey(event)) {
-                        // if there is already dot present than do not allow next one
-                        if (oldViewValue.indexOf('.') !== -1) {
+                        // if we do not allow dot or there is already dot present than do not allow next one
+                        if (iAttrs.decimalPlaces <= 0 || oldViewValue.indexOf('.') !== -1) {
                             event.preventDefault();
                         }
                     }
@@ -93,7 +93,7 @@ angular.module('baryr.formattedNumber', [])
                         event.preventDefault();
                     }
                 }
-                
+
                 function formatter(input) {
                     var formattedInput = input ? input : '';
                     // remove non digit and non dot characters
@@ -102,7 +102,7 @@ angular.module('baryr.formattedNumber', [])
                     formattedInput = formattedInput.replace(/^([^.]*\.)(.*)$/, function (a, b, c) {
                         return b + c.replace(/\./g, '').substring (0, config.decimalPlaces);
                     });
-                    
+
                     // format string using thousandSeparator
                     var indexOfDot = formattedInput.indexOf('.');
                     if (indexOfDot !== -1) {
@@ -112,7 +112,7 @@ angular.module('baryr.formattedNumber', [])
                     } else {
                         formattedInput = formattedInput.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1' + config.thousandSeparator);
                     }
-                    
+
                     return formattedInput;
                 }
 
